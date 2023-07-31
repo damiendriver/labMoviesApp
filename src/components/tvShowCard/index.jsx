@@ -13,7 +13,8 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import Avatar from "@mui/material/Avatar";
-import { MoviesContext } from "../../contexts/moviesContext";
+//import { MoviesContext } from "../../contexts/moviesContext";
+import { TVShowsContext } from "../../contexts/tvShowsContext";
 
 
 const styles = {
@@ -24,8 +25,8 @@ const styles = {
   },
 };
 
-export default function TVShowCard({ tvShow, action }) {      // Destructure props
-  const { favourites, addToFavourites } = useContext(MoviesContext);
+export default function TVShowCard({ tvShow, action }) {
+  const { favourites, addToFavourites } = useContext(TVShowsContext);
 
   if (favourites.find((id) => id === tvShow.id)) {
     tvShow.favourite = true;
@@ -76,7 +77,7 @@ export default function TVShowCard({ tvShow, action }) {      // Destructure pro
       </CardContent>
       <CardActions disableSpacing>
       {action(tvShow)}
-        <Link to={`/movies/${tvShow.id}`}>
+        <Link to={`/tvshows/${tvShow.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>

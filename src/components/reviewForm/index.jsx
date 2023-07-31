@@ -6,14 +6,15 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useForm, Controller } from "react-hook-form";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { TVShowsContext } from "../../contexts/tvShowsContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles";
 import ratings from "./ratingCategories";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-
-const ReviewForm = ({ movie }) => {
+// const ReviewForm = ({ movie }) => {
+const ReviewForm = ({ content, category }) => {
   const defaultValues = {
     author: "",
     review: "",
@@ -27,11 +28,13 @@ const ReviewForm = ({ movie }) => {
     reset,
   } = useForm(defaultValues);
   const navigate = useNavigate();
-  const context = useContext(MoviesContext);
+  // const context = useContext(MoviesContext);
   const [rating, setRating] = useState(3);
   const [open, setOpen] = useState(false);  //NEW
 
-
+  let contextType;
+  contextType = category === "movie" ? MoviesContext : TVShowsContext
+  let context = useContext(contextType);
 
   const handleRatingChange = (event) => {
     setRating(event.target.value);
@@ -44,10 +47,14 @@ const ReviewForm = ({ movie }) => {
 
 
   const onSubmit = (review) => {
-    review.movieId = movie.id;
+    // review.movieId = movie.id;
+    review.categoryId = content.id;
     review.rating = rating;
+    review.category = category
     // console.log(review);
-    context.addReview(movie, review);
+    // context.addReview(movie, review);
+    context.addReview(content, review);
+    reviewContent(category, content.id, rating)
     setOpen(true); // NEW
   };
 
