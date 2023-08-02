@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from '../movieReviews'
+import TVShowReviews from '../tvShowReviews'
 
 const styles = {
   chipSet: {
@@ -57,6 +57,14 @@ const TVShowDetails = ( {tvShow}) => {
         <Chip icon={<AccessTimeIcon />} label={`${tvShow.episode_run_time} min.`} />  
       </Paper>
 
+      <Paper component="ul" sx={styles.chipSet}>
+        <Chip
+          icon={<StarRate />}
+          label={`${tvShow.vote_average} - (${tvShow.vote_count}`}
+        />
+        <Chip label={`First aired: ${tvShow.first_air_date}`} />
+      </Paper>
+
 
       <Fab    
         color="secondary"
@@ -68,7 +76,7 @@ const TVShowDetails = ( {tvShow}) => {
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews tvShow={tvShow} />
+        <TVShowReviews tvShow={tvShow} />
       </Drawer>
     </>
   );

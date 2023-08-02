@@ -109,7 +109,7 @@ export const getMovie = (args) => {
 
   export const getTVShows = () => {
     return fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1'`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1sort_by=popularity.asc'`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -121,7 +121,7 @@ export const getMovie = (args) => {
     });
   };
 
-  export const getTVImages = ({ queryKey }) => {
+  export const getTVShowImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
@@ -169,4 +169,15 @@ export const getMovie = (args) => {
       .catch((error) => {
         throw error
      });
+    };
+
+    export const getTVShowReviews = (id) => {
+      return fetch(
+        `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${import.meta.env.VITE_TMDB_KEY}`
+      )
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json.results);
+          return json.results;
+        });
     };

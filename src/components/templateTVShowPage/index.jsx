@@ -3,7 +3,7 @@ import TVShowHeader from "../headerTVShow";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getTVImages } from "../../api/tmdb-api";
+import { getTVShowImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
 
@@ -22,7 +22,7 @@ const styles = {
 const TemplateTVShowPage = ({ tvShow, children }) => {
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: tvShow.id }],
-    getTVImages
+    getTVShowImages
   );
 
   if (isLoading) {
@@ -39,7 +39,7 @@ const TemplateTVShowPage = ({ tvShow, children }) => {
       <TVShowHeader tvShow={tvShow} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <div sx={styles.gridListRoot}>
             <ImageList cols={1}>
               {images.map((image) => (
