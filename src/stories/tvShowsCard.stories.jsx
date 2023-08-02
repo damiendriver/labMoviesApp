@@ -2,7 +2,7 @@ import React from "react";
 import TVShowCard from "../components/tvShowCard";
 import SampleTVShow from "./sampleData";
 import { MemoryRouter } from "react-router";
-import MoviesContextProvider from "../contexts/moviesContext";
+import TVShowsContextProvider from "../contexts/tvShowsContext";
 import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 
@@ -11,7 +11,7 @@ export default {
   component: TVShowCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
-    (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
+    (Story) => <TVShowsContextProvider>{Story()}</TVShowsContextProvider>,
   ],
 };
 
@@ -29,7 +29,7 @@ Basic.storyName = "Default";
 export const Exceptional = () => {
   const sampleNoPoster = { ...SampleTVShow, poster_path: undefined };
   return (
-    <MovieCard
+    <TVShowCard
       tvShow={sampleNoPoster}
       action={(tvShow) => <AddToFavouritesIcon tvShow={tvShow} />}
       taging={(tvShow) => null}

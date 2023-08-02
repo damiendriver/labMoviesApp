@@ -6,7 +6,7 @@ import FilterTVCard from "../filterTVShowsCard";
 import Grid from "@mui/material/Grid";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import TVShowList from "../TVShowList";
+import TVShowList from "../tvShowList";
 
 const styles = {
   root: {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
@@ -8,6 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CardHeader from "@mui/material/CardHeader";
+import { TVShowsContext } from "../../contexts/tvShowsContext";
 
 const styles = {
     root: {  
@@ -23,23 +24,26 @@ const styles = {
 };
 
 const TVShowHeader = (props) => {
-  const tvShow = props.tvShow;
-  const favs = JSON.parse(localStorage.getItem("favourites"));
+	const tvShow = props.tvShow;
+	const { favourites } = useContext(TVShowsContext);
 
-  return (
-    <Paper component="div" sx={styles.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
-      </IconButton>
-      <CardHeader
-      avatar={
-        favs.some((favs) => favs.id === tvShow.id) ? (
-          <Avatar sx={styles.avatar}>
-            <FavoriteIcon />
-          </Avatar>
-        ) : null
-      }
-      />
+	if (favourites.find((id) => id === tvShow.id)) {
+		tvShow.favourite = true;
+	} else {
+		tvShow.favourite = false;
+	}
+
+	return (
+		<Paper component="div" sx={styles.root}>
+			<IconButton aria-label="go back">
+				<ArrowBackIcon color="primary" fontSize="large" />
+			</IconButton>
+
+			{tvShow.favourite ? (
+				<Avatar sx={styles.avatar}>
+					<FavoriteIcon />
+				</Avatar>
+			) : null}
 
       <Typography variant="h4" component="h3">
         {tvShow.name}{"   "}
