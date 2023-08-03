@@ -8,7 +8,9 @@ import Typography from "@mui/material/Typography";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from '../movieReviews'
+import MovieReviews from '../movieReviews';
+import GroupIcon from '@mui/icons-material/Group';
+import { Link } from "react-router-dom";
 
 const styles = {
   chipSet: {
@@ -54,6 +56,9 @@ const MovieDetails = ( {movie}) => {
         ))}
       </Paper>
       <Paper component="ul" sx={styles.chipSet}>
+        <Link to={`/actors`}>
+        <Chip icon={<GroupIcon />} label="Cast" color="secondary" />
+        </Link>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}

@@ -39,7 +39,7 @@ const TemplateTVShowPage = ({ tvShow, children }) => {
       <TVShowHeader tvShow={tvShow} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <div sx={styles.gridListRoot}>
             <ImageList cols={1}>
               {images.map((image) => (
