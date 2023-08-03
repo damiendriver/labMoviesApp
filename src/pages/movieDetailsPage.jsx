@@ -2,18 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
-// import useMovie from "../hooks/useMovie";   Redundant
-import { getMovie } from '../api/tmdb-api'
+import { getMovie, getMovieActor } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
+import ActorsList from "../components/actorsMovieList";
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
 
-  const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: id }],
-    getMovie
-  );
+  const { data: movie, error, isLoading, isError } = useQuery(["movie", { id: id }],getMovie);
 
   if (isLoading) {
     return <Spinner />;

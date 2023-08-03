@@ -24,26 +24,12 @@ const styles = {
 
 const ActorsHeader = (props) => {
 	const actor = props.actor;
-	const { favourites } = useContext(MoviesContext);
-
-	if (favourites.find((id) => id === actor.id)) {
-		actor.favourite = true;
-	} else {
-		actor.favourite = false;
-	}
-
+	
     return (
         <Paper component="div" sx={styles.root}>
 			<IconButton aria-label="go back">
 				<ArrowBackIcon color="primary" fontSize="large" />
 			</IconButton>
-
-			{actor.favourite ? (
-				<Avatar sx={styles.avatar}>
-					<FavoriteIcon />
-				</Avatar>
-			) : null}
-
 
             <Typography variant="h4" component="h3">
                 {actor.name}{"   "}

@@ -1,5 +1,5 @@
 import React from "react";
-import ActorHeader from "../headerActor";
+import ActorsHeader from "../headerActors";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -36,7 +36,7 @@ const TemplateActorsPage = ({ actor, children }) => {
 
     return (
         <>
-            <ActorHeader actor={actor} />
+            <ActorsHeader actor={actor} />
 
             <Grid container spacing={5} style={{ padding: "15px" }}>
                 <Grid item xs={3}>
