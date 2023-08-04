@@ -5,6 +5,8 @@ import Grid from "@mui/material/Grid";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieList from "../movieList";
+import Pagination from "@mui/material/Pagination";
+import Typography from "@mui/material/Typography";
 
 const styles = {
   root: {
@@ -18,10 +20,11 @@ const styles = {
   },
 };
 
-function MovieListPageTemplate({ movies, title, action }) {
+function MovieListPageTemplate({ movies, title, action, currentPage, updatePage, totalPage, resultPage }) {
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [yearFilter, setYearFilter] = useState("");
 
   const genreId = Number(genreFilter);
 
@@ -38,7 +41,12 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);
+    if (type === "year") setYearFilter(value);
     else setGenreFilter(value);
+  };
+
+  const handlePaginationChange = (event, value) => {
+    resultPage(value);
   };
 
   return (
@@ -50,6 +58,10 @@ function MovieListPageTemplate({ movies, title, action }) {
         <Grid item container spacing={5}>
         <MovieList action={action} movies={displayedMovies} />
         </Grid>
+        <>
+        <Typography>{totalPage} Movies Found: </Typography>
+        <Pagination count={50} page={currentPage} onChange={handlePaginationChange} />
+          </>
       </Grid>
       <Fab
         color="secondary"
@@ -68,6 +80,7 @@ function MovieListPageTemplate({ movies, title, action }) {
           onUserInput={handleChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}
+          yearFilter={yearFilter}
         />
       </Drawer>
     </>  

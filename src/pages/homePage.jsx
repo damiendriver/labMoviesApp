@@ -7,7 +7,12 @@ import Spinner from "../components/spinner";
 import AddToFavouritesIcon from '../components/cardIcons/addtoFavourites'
 
 const HomePage = (props) => {
+  const [page, setPage] = React.useState(1);
   const { data, error, isLoading, isError } = useQuery("discover", getMovies);
+
+  const resultPage = (newPage) => {
+    setPage(newPage);
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -17,11 +22,7 @@ const HomePage = (props) => {
   }
 
   const movies = data ? data.results : [];
-
-  // Redundant, but necessary to avoid app crashing.
-  // const favourites = movies.filter((m) => m.favorite);
-  // localStorage.setItem("favourites", JSON.stringify(favourites));
-  // const addToFavourites = (movieId) => true;
+  const totalPage = data ? data.total_results : null;
 
   return (
     <PageTemplate
@@ -30,10 +31,10 @@ const HomePage = (props) => {
       action={(movie) => {
         return <AddToFavouritesIcon movie={movie} />
       }}
+      currentPage={page}
+      resultPage={resultPage}
+      totalPage={totalPage}
     />
   );
 };
 export default HomePage;
-
-
-
