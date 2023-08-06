@@ -42,7 +42,7 @@ const FavouriteMoviesPage = (props) => {
           </>
         );
       }}
-      hidePagination={true}
+      paginationHidden={true}
     />
   );
     };
