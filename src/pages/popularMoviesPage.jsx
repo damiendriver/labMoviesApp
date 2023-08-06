@@ -1,15 +1,16 @@
-// import React, { useState, useEffect } from "react";
 import React from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import { getPopularMovies } from "../api/tmdb-api";
-// import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
 import AddtoPlaylistIcon from '../components/cardIcons/addtoPlaylist';
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 
 
 const PopularMoviesPage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("discoverPopularMovies", getPopularMovies);
+  const [pageNumber, setPageNumber] = React.useState(1);
+  const { data, error, isLoading, isError } = useQuery(["PopularMovies", pageNumber], () => getPopularMovies(pageNumber));
+
+  const resultPage = (newPage) => {setPageNumber(newPage);};
 
   if (isLoading) {
     return <Spinner />;
@@ -19,6 +20,7 @@ const PopularMoviesPage = (props) => {
   }
 
   const movies = data ? data.results : [];
+  const totalPage = data ? data.total_results : null;
 
   return (
     <PageTemplate
@@ -27,6 +29,9 @@ const PopularMoviesPage = (props) => {
       action={(movie) => {
         return  <AddtoPlaylistIcon movie={movie} />
       }}
+      currentPage={pageNumber}
+      resultPage={resultPage}
+      totalPage={totalPage}
       />
   );
 };

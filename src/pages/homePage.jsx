@@ -7,11 +7,11 @@ import Spinner from "../components/spinner";
 import AddToFavouritesIcon from '../components/cardIcons/addtoFavourites'
 
 const HomePage = (props) => {
-  const [page, setPage] = React.useState(1);
-  const { data, error, isLoading, isError } = useQuery("discover", getMovies);
+  const [pageNumber, setPageNumber] = React.useState(1);
+  const { data, error, isLoading, isError } = useQuery(["discover", pageNumber], () => getMovies(pageNumber));
 
   const resultPage = (newPage) => {
-    setPage(newPage);
+    setPageNumber(newPage);
   };
 
   if (isLoading) {
@@ -31,7 +31,7 @@ const HomePage = (props) => {
       action={(movie) => {
         return <AddToFavouritesIcon movie={movie} />
       }}
-      currentPage={page}
+      currentPage={pageNumber}
       resultPage={resultPage}
       totalPage={totalPage}
     />

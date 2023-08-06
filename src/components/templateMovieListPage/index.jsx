@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieList from "../movieList";
+import Stack from '@mui/material/Stack';
 import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
 
@@ -20,7 +21,7 @@ const styles = {
   },
 };
 
-function MovieListPageTemplate({ movies, title, action, currentPage, updatePage, totalPage, resultPage }) {
+function MovieListPageTemplate({ movies, title, action, currentPage, totalPage, resultPage, paginationHidden }) {
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -48,7 +49,8 @@ function MovieListPageTemplate({ movies, title, action, currentPage, updatePage,
   const handlePaginationChange = (event, value) => {
     resultPage(value);
   };
-
+  //console.log('result page : ', resultPage)
+  //console.log('current page : ', currentPage)
   return (
    <>
       <Grid container sx={styles.root}>
@@ -58,10 +60,14 @@ function MovieListPageTemplate({ movies, title, action, currentPage, updatePage,
         <Grid item container spacing={5}>
         <MovieList action={action} movies={displayedMovies} />
         </Grid>
+        {!paginationHidden && (
         <>
-        <Typography>{totalPage} Movies Found: </Typography>
-        <Pagination count={50} page={currentPage} onChange={handlePaginationChange} />
+        <Stack spacing={2}>
+        <Typography> Total Movies Found: {totalPage} </Typography>
+        <Pagination count={25} color="primary" shape="rounded" page={currentPage} onChange={handlePaginationChange} />
+        </Stack>
           </>
+        )}
       </Grid>
       <Fab
         color="secondary"
