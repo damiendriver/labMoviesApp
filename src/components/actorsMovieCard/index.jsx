@@ -64,7 +64,7 @@ export default function ActorsCard({ actor, action }) {
                     <Grid item xs={6}>
                         <Typography variant="h6" component="p">
                             <VideocamIcon fontSize="small" />
-                            {actor.biography}
+                            {actor.known_for_department}
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -78,7 +78,7 @@ export default function ActorsCard({ actor, action }) {
             <CardActions disableSpacing>
                 <Link to={`/actors/${actor.id}`}>
                     <Button variant="outlined" size="medium" color="primary">
-                        More Info ...
+                        More Info about <br />{actor.name}
                     </Button>
                 </Link>
             </CardActions>

@@ -31,7 +31,6 @@ const styles = {
 
 const ActorsDetails = ({ actor }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
-   
 
     return (
         <>
