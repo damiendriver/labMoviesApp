@@ -30,19 +30,17 @@ const SiteHeader = () => {
   const { token, onLogout } = useContext(AuthContext);
 
 
-  const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favourites" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Popular", path: "/movies/popular" },
-    { label: "TV Shows", path: "/tvshows/" },
-    { label: "Actors", path: "/actors/" },
+  let menuOptions = [
+    { label: "Home", path: "/", type: "public" },
+    { label: "Favorites", path: "/movies/favourites", type: "private" },
+    { label: "Upcoming", path: "/movies/upcoming", type: "public" },
+    { label: "Popular", path: "/movies/popular", type: "public" },
+    { label: "TV Shows", path: "/tvshows/", type: "public" },
+    { label: "Actors", path: "/actors/", type: "public" },
     { label: token ? "Logout" : "Login", path: token ? "/logout" : "/login", type: "public" },
   ];
 
-  //if(!token) {
-  //  menuOptions = menuOptions.filter((m) => m.type !== "private")
-  //}
+  if(!token) {menuOptions = menuOptions.filter((m) => m.type !== "private")}
 
   const handleMenuSelect = (pageURL) => {
     if(pageURL.includes("logout")){
