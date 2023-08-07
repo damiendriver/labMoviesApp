@@ -20,6 +20,8 @@ import TableRow from '@mui/material/TableRow';
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getMovieActor } from "../../api/tmdb-api";
+import CardMedia from "@mui/material/CardMedia";
+import img from '../../images/film-poster-placeholder.png';
 
 const styles = {
   chipSet: {
@@ -31,6 +33,7 @@ const styles = {
     padding: 1.5,
     margin: 0,
   },
+  media: { height: 150 },
   chipLabel: {
     margin: 0.5,
   },
@@ -39,6 +42,9 @@ const styles = {
     top: 50,
     right: 2,
   },
+  headRow: {
+    backgroundColor: "yellow"
+  }
 };
 
 const MovieDetails = ( {movie}) => {
@@ -97,7 +103,8 @@ const MovieDetails = ( {movie}) => {
       <TableContainer component={Paper}>
       <Table aria-label="Cast List Table">
           <TableHead>
-            <TableRow sx={{backgroundColor: "yellow"}}>
+            <TableRow sx={styles.headRow}>
+              <TableCell></TableCell>
               <TableCell>Actor</TableCell>
               <TableCell>Film Character</TableCell>
             </TableRow>
@@ -105,6 +112,13 @@ const MovieDetails = ( {movie}) => {
             <TableBody>
             {cast.map((actor) => (
               <TableRow key={actor.name}>
+                <TableCell>
+                <Link to={`/actors/${actor.id}`}>
+                <CardMedia
+                sx={styles.media}
+                image={actor.profile_path ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}` : img}
+            /></Link>
+            </TableCell>
                   <TableCell>
                   <Link to={`/actors/${actor.id}`}>
                     {actor.name}

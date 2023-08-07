@@ -47,7 +47,7 @@ const MovieHeader = (props) => {
 			<Typography variant="h4" component="h3">
 				{movie.title}
 				{"   "}
-				<a href={movie.homepage}>
+				<a href={movie.homepage} target="_blank">
 					<HomeIcon color="primary" fontSize="='large" />
 				</a>
 				<br />
