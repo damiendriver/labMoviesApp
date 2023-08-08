@@ -8,6 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { CardHeader } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 const styles = {
     root: {
@@ -24,10 +25,11 @@ const styles = {
 
 const ActorsHeader = (props) => {
 	const actor = props.actor;
+    const navigate = useNavigate();
 	
     return (
         <Paper component="div" sx={styles.root}>
-			<IconButton aria-label="go back">
+			<IconButton aria-label="go back" onClick={() => navigate(-1)}>
 				<ArrowBackIcon color="primary" fontSize="large" />
 			</IconButton>
 
@@ -35,7 +37,7 @@ const ActorsHeader = (props) => {
                 {actor.name}{"   "}
                 <br />
             </Typography>
-            <IconButton aria-label="go forward">
+            <IconButton aria-label="go forward" onClick={() => navigate(1)}>
                 <ArrowForwardIcon color="primary" fontSize="large" />
             </IconButton>
         </Paper>
