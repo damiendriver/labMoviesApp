@@ -14,6 +14,7 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { AuthContext } from "../../contexts/authContext";
 
 
 const styles = {
@@ -25,7 +26,8 @@ const styles = {
 };
 
 export default function MovieCard({ movie, action }) {      // Destructure props
-  const { favourites, addToFavourites } = useContext(MoviesContext);
+  const { favourites } = useContext(MoviesContext);
+  const { token } = useContext(AuthContext)
 
   if (favourites.find((id) => id === movie.id)) {
     movie.favourite = true;
@@ -76,11 +78,11 @@ export default function MovieCard({ movie, action }) {      // Destructure props
       </CardContent>
       <CardActions disableSpacing>
       {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
+        { token ? <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
-        </Link>
+        </Link> : null}
       </CardActions>
     </Card>
   );

@@ -8,6 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { useNavigate } from 'react-router-dom';
 
 const styles = {
     root: {  
@@ -32,10 +33,12 @@ const MovieHeader = (props) => {
 		movie.favourite = false;
 	}
 
+	const navigate = useNavigate();
+
 	return (
 		<Paper component="div" sx={styles.root}>
-			<IconButton aria-label="go back">
-				<ArrowBackIcon color="primary" fontSize="large" />
+			<IconButton aria-label="go back" onClick={() => navigate(-1)}>
+				<ArrowBackIcon color="primary" fontSize="large"  />
 			</IconButton>
 
 			{movie.favourite ? (
@@ -53,7 +56,7 @@ const MovieHeader = (props) => {
 				<br />
 				<span>{`${movie.tagline}`} </span>
 			</Typography>
-			<IconButton aria-label="go forward">
+			<IconButton aria-label="go forward" onClick={() => navigate(1)}>
 				<ArrowForwardIcon color="primary" fontSize="large" />
 			</IconButton>
 		</Paper>

@@ -1,24 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import { Typography, Box, Alert } from "@mui/material";
 import { useForm } from "react-hook-form";
-import styles from "../reviewForm/styles";
 import UserAccounts from "../userAccounts";
 
-export default function LoginPageTemplate() {
+export default function LoginTemplate() {
   const [msg, setMsg] = useState("");
   const { onLogin, token, loginError } = useContext(AuthContext);
-  const {
-    control,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({ username: "", password: "" });
+  const { control, formState: { errors }, handleSubmit,} = useForm({ username: "", password: "" });
 
   const navigate = useNavigate();
-  if (token) {
-    navigate("/movies");
-  }
+    if (token) {
+      useEffect(() => {
+      navigate("/movies");
+    })}
+
   const onSubmit = async (credentials) => {
     const error = await onLogin({
       username: credentials.username,

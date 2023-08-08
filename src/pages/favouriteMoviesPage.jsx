@@ -28,8 +28,6 @@ const FavouriteMoviesPage = (props) => {
 
   const movies = favouriteMovieQueries.map((q) => q.data);
 
-  // const toDo = () => true;
-
   return (
     <PageTemplate
       title="Favourite Movies"

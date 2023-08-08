@@ -1,9 +1,9 @@
-import PageTemplate from "../components/templateLoginPage";
+import LoginTemplate from "../components/templateLoginPage";
 
 const LoginPage = ({supabaseClient}) => {
 
   return (
-    <PageTemplate
+    <LoginTemplate
       title="Login"
       supabaseClient={supabaseClient}
     />
