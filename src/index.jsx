@@ -21,6 +21,7 @@ import AuthContextProvider from "./contexts/authContext";
 import SignupPage from "./pages/signupPage";
 import LoginPage from "./pages/loginPage";
 import PrivateRoute from "./components/privateRoute";
+import AddFantasyMoviePage from './pages/fantasyMoviePage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="/tvShows/:id" element={<TVShowDetailsPage/>} />
             <Route path="/actors" element={<ActorsPage />} />
             <Route path="/actors/:id" element={<ActorDetailsPage />} />
+            <Route path="/movies/fantasy" element={<AddFantasyMoviePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
           </Routes>
