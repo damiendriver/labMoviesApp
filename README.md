@@ -5,11 +5,19 @@ __Name:__ [Damien Driver]
 
 ## Features.
 
-[A bullet-point list of the features developed for the React SPA app (only new/modified ones for the Movies app),]
++ TV Shows
++ TV Show Details 
++ Actors
++ Actor Detail
++ Upcoming Movies
++ Cast added to Movie Detail
++ Hyperlink from Cast to Actor Card 
++ Create Fantasy Movie Form
++ Pagination on Movies 
++ Protected route Favourite Movies
++ Authentication via Supabase
++ Deployment via Vercel
 
-+ Feature X.
-+ Feature Y. 
-+ etc.
 
 ## Feature Design.
 
