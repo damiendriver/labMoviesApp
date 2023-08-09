@@ -13,7 +13,7 @@ import Alert from "@mui/material/Alert";
 import genres from "./genreCategories";
 
 
-const FantasyMovieForm = () => {
+const FantasyForm = () => {
   const defaultValues = {
     title: "",
     genre: "Action",
@@ -22,7 +22,6 @@ const FantasyMovieForm = () => {
     productionCompany: "",
     overview: "",
   };
-
   const {
     control,
     formState: { errors },
@@ -31,12 +30,8 @@ const FantasyMovieForm = () => {
   } = useForm(defaultValues);
   
   const context = useContext(MoviesContext);
-  const [genreCat, setGenreCat] = useState("0");
   const [open, setOpen] = useState(false);
-
-  const handleGenreCatChange = (event) => {
-    setGenreCat(event.target.value);
-};
+  const [genre, setGenre] = useState(0);
 
   const handleSnackClose = (event) => {
     setOpen(false);
@@ -45,22 +40,20 @@ const FantasyMovieForm = () => {
 
   const onSubmit = (fantasy) => {
     context.addFantasyMovie(fantasy);
-    fantasy.title = title;
-    fantasy.genre = genres;
-    fantasy.releasedate = releasedate;
-    fantasy.runtime = runtime;
-    fantasy.productionCompany = productionCompany;
-    fantasy.overview = overview
-    genreContent(title, genres, overview)
+    fantasy.genres = genres;
     setOpen(true);
   };
+
+  const handleGenreChange = (event) => {
+    setGenre(event.target.value);
+  };  
 
   const navigate = useNavigate();
 
   return (
     <Box component="div" sx={styles.root}>
       <Typography component="h2" variant="h3">
-        Enter Your Movie Critera
+        Enter Details of Your Fantasy Movie
       </Typography>
       <Snackbar
         sx={styles.snack}
@@ -110,25 +103,25 @@ const FantasyMovieForm = () => {
           render={({ field: { onChange, value } }) => (
             <TextField
               sx={{ width: "40ch" }}
-              id="genre"
-              select
               variant="outlined"
-              label="Genre"
-              value={genreCat}
               margin="normal"
               required
-              onChange={handleGenreCatChange}
-              helperText="Select your Genre"
+              onChange={handleGenreChange}
+              value={genre}
+              id="genre"
+              select
+              label="Genre"
               autoFocus
-            >
+              helperText="Please select a Genre"
+              >
               {genres.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                  {option.label}
                 </MenuItem>
               ))}
             </TextField>
           )}
-        />
+            />
         {errors.genre && (
           <Typography variant="h6" component="p">
             {errors.genre.message}
@@ -234,7 +227,7 @@ const FantasyMovieForm = () => {
             {errors.overview.message}
           </Typography>
         )}
-
+        
         <Box sx={styles.buttons}>
           <Button
             type="submit"
@@ -251,8 +244,12 @@ const FantasyMovieForm = () => {
             sx={styles.submit}
             onClick={() => {
               reset({
-                author: "",
-                content: "",
+                title: "",
+                genre: "",
+                releasedate: "",
+                runtime: "",
+                productionCompany: "",
+                overview: "",
               });
             }}
           >
@@ -264,4 +261,4 @@ const FantasyMovieForm = () => {
   );
 };
 
-export default FantasyMovieForm;
+export default FantasyForm;

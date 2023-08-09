@@ -13,7 +13,7 @@ const supabase = createClient(
 const AuthContextProvider = ({ children }) => {
   const originLocation = useLocation();
   const navigate = useNavigate();
-  const [token, setSession] = useState(null)
+  const [token, setSession] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { token } }) => {
