@@ -21,21 +21,18 @@ __Name:__ [Damien Driver]
 
 ## Feature Design.
 
-[ For each feature listed above, show a screenshot(s) of its UI layout (use appropriate magnification for accessibility). Include a caption with each image.]
 
-e.g. 
+#### TV Shows.
 
-#### Upcoming Movies.
+> Lists TV Shows from the TV Shows endpoint of TMDB.
 
-> Lists movies from the Upcoming movies endpoint of TMDB.
+![][tvShowList]
 
-![][image1]
+#### TV Show Details.
 
-#### Movies Reviews.
+> Displays overview of TV Show from TV Details endpoint of TMDB.
 
-> Lists all the reviews for a particular movie (shows text extract only).
-
-![][image2]
+![][tvShowDetails]
 
 > Click the 'Full Review' link of a review extract to see the review's full text. 
 
@@ -90,8 +87,8 @@ Username: test1 ; Password: pass1
 
 [ Briefly explain any other aspects of your app's design or implementation that is non-standard and worthy of mention.]
 
-[image1]: ./images/image1.png
-[image2]: ./images/image2.png
+[tvShowList]: ./images/tvShowList.png
+[tvShowDetails]: ./images/tvShowDetails.png
 [image3]: ./images/image3.png
 [image4]: ./images/image4.png
 [image5]: ./images/image5.png

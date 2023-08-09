@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
     const currentLocation = useLocation();
 
     if (!token) {
-      return <Navigate to="/home" replace state={{ from: currentLocation }} />;
+      return <Navigate to="/Login" replace state={{ from: currentLocation }} />;
     }
     return children;
   };

@@ -34,7 +34,7 @@ const SiteHeader = () => {
     { label: "Home", path: "/", type: "public" },
     { label: "Favorites", path: "/movies/favourites", type: "public" },
     { label: "Upcoming", path: "/movies/upcoming", type: "public" },
-    { label: "Popular", path: "/movies/popular", type: "public" },
+    { label: "Popular Irish", path: "/movies/popular", type: "public" },
     { label: "TV Shows", path: "/tvshows/", type: "public" },
     { label: "Actors", path: "/actors/", type: "public" },
     { label: "Fantasy Movie", path: "/movies/fantasy", type: "public" },
