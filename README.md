@@ -71,6 +71,12 @@ __Name:__ [Damien Driver]
 
 ![Fantasy Form](src/images/fantasyForm.png)
 
+#### Pagination.
+
+> Pagination added to Movie List Pages
+
+![Pagination](src/images/pagination.png)
+
 
 
 ## Storybook.
@@ -129,10 +135,19 @@ Authentication added using supabase, user must login in order to access some fea
 +   /movies/favourites - FavouriteMoviesPage
 +   /movies/fantasy - AddFantasyMoviePage
 
++   more info button on movie list pages is hidden until login.   
 
-#### Supabase (if relevant)
 
-[Include a screenshot(s) from your Supabase account that verifies its use for this app. ]
+#### Supabase.
+
+> Supabase Dashboard
+
+![Supabase Dashboard](src/images/supabase-dashboard.png)
+
+> Supabase Auth Users
+
+![Supabase Auth Users](src/images/supabase-auth.png)
+
 
 ## Deployment.
 
@@ -144,5 +159,7 @@ Authentication added using supabase, user must login in order to access some fea
 
 ## Additional Information /  Known Issues.
 
++   All Pages made public as private/protected not showing when logged in.
 +   After Login the siteheader is not updating to show the Logout option.
 +   Fantasy Movie can be created but page was not built to display details.
++   Storybook - movieheader page is returning context error.
