@@ -48,25 +48,7 @@ function ActorsListPageTemplate({ actors, title, action }) {
                     <ActorsList action={action} actors={actors} />
                 </Grid>
             </Grid>
-            <Fab
-                color="secondary"
-                variant="extended"
-                onClick={() => setDrawerOpen(true)}
-                sx={styles.fab}
-            >
-                Filter
-            </Fab>
-            <Drawer
-                anchor="left"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-            >
-                <FilterCard
-                    onUserInput={handleChange}
-                    titleFilter={titleFilter}
-                    genreFilter={genreFilter}
-                />
-            </Drawer>
+            
         </>
     );
 }

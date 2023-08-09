@@ -26,13 +26,25 @@ __Name:__ [Damien Driver]
 
 > Lists TV Shows from the TV Shows endpoint of TMDB.
 
-![][tvShowList]
+![TV Show List](src/images/tvShowList.png)
 
 #### TV Show Details.
 
 > Displays overview of TV Show from TV Details endpoint of TMDB.
 
-![][tvShowDetails]
+![TV Show Details](src/images/tvShowDetails.png)
+
+#### Actors List.
+
+> Displays list of Actors from People endpoint of TMDB.
+
+![Actors List](src/images/actorsList.png)
+
+#### Actor Details.
+
+> Displays overview of Actor from People endpoint of TMDB.
+
+![Actor Details](src/images/actorsDetails.png)
 
 > Click the 'Full Review' link of a review extract to see the review's full text. 
 
@@ -86,9 +98,3 @@ Username: test1 ; Password: pass1
 ## Additional Information.
 
 [ Briefly explain any other aspects of your app's design or implementation that is non-standard and worthy of mention.]
-
-[tvShowList]: ./images/tvShowList.png
-[tvShowDetails]: ./images/tvShowDetails.png
-[image3]: ./images/image3.png
-[image4]: ./images/image4.png
-[image5]: ./images/image5.png
