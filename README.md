@@ -10,6 +10,7 @@ __Name:__ [Damien Driver]
 + Actors
 + Actor Detail
 + Upcoming Movies
++ Popular Irish Movies
 + Cast added to Movie Detail
 + Hyperlink from Cast to Actor Card 
 + Create Fantasy Movie Form
@@ -46,55 +47,102 @@ __Name:__ [Damien Driver]
 
 ![Actor Details](src/images/actorsDetails.png)
 
-> Click the 'Full Review' link of a review extract to see the review's full text. 
+#### UpComing Movie.
 
-![][image3]
+> Displays list from Upcoming Movies endpoint of TMDB.
 
-.... other features .......
+![upComing Movies](src/images/upComingMovies.png)
+
+#### Popular Irish Movies.
+
+> Displays list of Irish Movies from popular endpoint of TMDB.
+
+![Popular Irish](src/images/popularIrish.png)
+
+#### Cast on Movie Card.
+
+> Displays overview of Movie with 10 Cast Members with hyperlink back to Actors card. 
+
+![Cast Movie](src/images/castAdded.png)
+
+#### Fantasy Movie Form.
+
+> Form where user can create fantasy movie details (title, genre, release date, production company, overview)
+
+![Fantasy Form](src/images/fantasyForm.png)
+
+
 
 ## Storybook.
 
-[Include a screenshot(s) from the Storybook UI and highlight the stories for new components developed.]
+> Storybook Overview with new stories.
 
-e.g.
+![Storybook](src/images/storybook.png)
 
-![][image5]
+#### Storybook Actor Card.
 
-## Authentication. (if relevant)
+![Storybook Actor Card](src/images/storybook-actorCard.png)
 
-#### Protected routes 
+#### Storybook Actor Detail.
 
-[List all the routes in your app and highlight those that are protected/private (require authentication).]
+![Storybook Actor Detail](src/images/storybook-actorDetail.png)
 
-e.g.
+#### Storybook Movie Detail.
 
-+ /movies - List of 20  movies from the Discover endpoint,
-+ /movies/{movie_id} - Detailed information on a specific movie.
-+ /reviews/{review_id} (Protected) - The full text of a movie review.
-+ /movie/{movie_id}/similar - A list of similar movies. 
-+ /person/{person_id} (Protected) - A specific actor's bio.
-+ etc
-+ etc
+![Storybook Movie Detail](src/images/storybook-movieDetail.png)
 
-#### Protected functionality. (if relevant)
+#### Storybook TV Show List.
 
-[ Briefly state any app functionality that requires authentication, e.g. only authenticated users can tag a movie as a 'favourite'.]
+![Storybook TV Show](src/images/storybook-tvShowList.png)
+
+
+
+## Authentication.
+
+Authentication added using supabase, user must login in order to access some features such as Favourite Movies and Fantasy Movie.
+
+#### SignUp with Supabase.
+
+![SignUp](src/images/signUpPage.png)
+
+#### Login with Supabase.
+
+![Login](src/images/loginPage.png)
+
+> Unprotected Pages available to all
+
++   / - HomePage
++   /movies/upcoming - UpcomingMoviesPage
++   /movies/:id - MoviePage
++   /reviews/:id - MovieReviewPage
++   /reviews/form - AddMovieReviewPage
++   /movies/popular - PopularMoviesPage
++   /tvShows - TVShowsPage
++   /tvShows/:id - TVShowDetailsPage
++   /actors - ActorsPage
++   /actors/:id - ActorDetailsPage
++   /login - LoginPage
++   /signup - SignupPage
+
+> Protected Pages must be logged in to view
+
++   /movies/favourites - FavouriteMoviesPage
++   /movies/fantasy - AddFantasyMoviePage
+
 
 #### Supabase (if relevant)
 
 [Include a screenshot(s) from your Supabase account that verifies its use for this app. ]
 
-## Deployment (if relevant).
+## Deployment.
 
-[Specify the URL of your deployed app and include a screenshot(s) from your deployment platform account (e.g. Vercal) that verifies its use for this app. Set up a registered user for your app and specify their credentials.
+> Deployed to Vercel.
++ https://lab-movies-app-bbcp.vercel.app/
 
-Username: test1 ; Password: pass1
-]
+![Vercel](src/images/vercel.png)
 
-## Persistence (if relevant).
 
-[If you are persisting data to the Supabase backend (e.g. favourite movies, fantasy movie), include screenshots with appropriate captions to verify this aspect. ]
+## Additional Information /  Known Issues.
 
-## Additional Information.
-
-[ Briefly explain any other aspects of your app's design or implementation that is non-standard and worthy of mention.]
++   After Login the siteheader is not updating to show the Logout option.
++   Fantasy Movie can be created but page was not built to display details.
